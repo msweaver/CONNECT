@@ -42,5 +42,37 @@
         <sys:inverse-classloading />
 
     </sys:environment>
+    
+    <app:ext-module>
+        <app:connector>auditrepo_pool</app:connector>
+        <app:external-path>
+            <sys:groupId>org.tranql</sys:groupId>
+            <sys:artifactId>tranql-connector-mysql-local</sys:artifactId>
+            <sys:type>rar</sys:type>
+        </app:external-path>
+        
+        <conn:connector>
+	    <conn:resourceadapter>
+	         <conn:outbound-resourceadapter>
+	              <conn:connection-definition>
+	                  <conn:connectionfactory-interface>javax.sql.DataSource</conn:connectionfactory-interface>
+	                  <conn:connectiondefinition-instance>
+	                      <conn:name>auditrepo_pool</conn:name>
+	                      <conn:config-property-setting name="DatabaseName">auditrepo</conn:config-property-setting>
+	                      <conn:config-property-setting name="UserName">nhincuser</conn:config-property-setting>
+	                      <conn:config-property-setting name="Password">nhincpass</conn:config-property-setting>
+	                      <conn:connectionmanager>
+	                          <conn:single-pool>
+	                              <conn:max-size>10</conn:max-size>
+	                              <conn:min-size>0</conn:min-size>
+	                              <conn:match-one/>
+	                          </conn:single-pool>
+	                      </conn:connectionmanager>
+	                  </conn:connectiondefinition-instance>
+	              </conn:connection-definition>
+	         </conn:outbound-resourceadapter>
+	    </conn:resourceadapter>
+	</conn:connector>
+    </app:ext-module>
 
 </app:application>
