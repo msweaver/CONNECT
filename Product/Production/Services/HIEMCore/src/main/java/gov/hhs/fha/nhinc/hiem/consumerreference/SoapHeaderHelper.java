@@ -59,7 +59,9 @@ public class SoapHeaderHelper {
             log.debug("extract soapheader");
             SoapUtil soaputil = new SoapUtil();
             header = soaputil.extractSoapHeader(context, messageContextAttributeName);
-            log.debug("Header:"+header.toString());
+            if (header != null) {
+                log.debug("Header:"+header.toString());
+            }
         } catch (SOAPException ex) {
             log.error("failed to extract soapheader", ex);
         }

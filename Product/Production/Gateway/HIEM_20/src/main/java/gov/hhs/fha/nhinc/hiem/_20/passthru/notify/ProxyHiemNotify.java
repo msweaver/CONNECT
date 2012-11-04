@@ -27,7 +27,6 @@
 package gov.hhs.fha.nhinc.hiem._20.passthru.notify;
 
 import javax.annotation.Resource;
-import javax.jws.WebService;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.BindingType;
 
@@ -35,9 +34,8 @@ import javax.xml.ws.BindingType;
  * 
  * @author Sai Valluripalli
  */
-@WebService(endpointInterface = "gov.hhs.fha.nhinc.nhincproxynotificationconsumer.NhincProxyNotificationConsumerPortType")
 @BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
-public class ProxyHiemNotify {
+public class ProxyHiemNotify /*implements gov.hhs.fha.nhinc.nhincproxynotificationconsumer.NhincProxyNotificationConsumerPortType*/ {
 
     @Resource
     private WebServiceContext context;

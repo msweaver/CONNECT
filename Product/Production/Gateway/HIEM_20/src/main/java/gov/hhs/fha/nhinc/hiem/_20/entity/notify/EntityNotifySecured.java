@@ -35,7 +35,7 @@ import javax.xml.ws.WebServiceContext;
  * 
  * @author Sai Valluripalli
  */
-@WebService(endpointInterface = "gov.hhs.fha.nhinc.entitynotificationconsumersecured.EntityNotificationConsumerSecuredPortType")
+//@WebService(endpointInterface = "gov.hhs.fha.nhinc.entitynotificationconsumersecured.EntityNotificationConsumerSecuredPortType")
 @BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class EntityNotifySecured {
     @Resource

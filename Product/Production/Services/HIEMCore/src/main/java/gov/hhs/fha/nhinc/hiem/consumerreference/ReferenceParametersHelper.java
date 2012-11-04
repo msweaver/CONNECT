@@ -60,18 +60,21 @@ public class ReferenceParametersHelper {
     public static String getWsAddressingTo(SoapMessageElements referenceParametersElements) {
         
         String wsAddressingTo = null;
-        for (Element referenceParametersElement : referenceParametersElements.getElements()) {
+        
+        if (referenceParametersElements != null) {
+            for (Element referenceParametersElement : referenceParametersElements.getElements()) {
 
-            String nodeName = referenceParametersElement.getLocalName().toLowerCase();
-                   
-            if (nodeName.equals("to")) {
-                String nodeValue = referenceParametersElement.getNodeValue();
-                if (nodeValue == null && referenceParametersElement.getFirstChild() != null) {
-                    nodeValue = referenceParametersElement.getFirstChild().getNodeValue();
+                String nodeName = referenceParametersElement.getLocalName().toLowerCase();
+
+                if (nodeName.equals("to")) {
+                    String nodeValue = referenceParametersElement.getNodeValue();
+                    if (nodeValue == null && referenceParametersElement.getFirstChild() != null) {
+                        nodeValue = referenceParametersElement.getFirstChild().getNodeValue();
+                    }
+
+                    wsAddressingTo = nodeValue;
+                    break;
                 }
-                                
-                wsAddressingTo = nodeValue;
-                break;
             }
         }
         

@@ -36,7 +36,7 @@ import javax.xml.ws.soap.Addressing;
  * 
  * @author Neil Webb
  */
-@WebService(endpointInterface = "org.oasis_open.docs.wsn.bw_2.NotificationConsumer")
+//@WebService(endpointInterface = "org.oasis_open.docs.wsn.bw_2.NotificationConsumer")
 @BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 @Addressing(enabled = true)
 public class HiemNotify {
@@ -44,7 +44,7 @@ public class HiemNotify {
     private WebServiceContext context;
 
     public void notify(org.oasis_open.docs.wsn.b_2.Notify notify) {
-        HiemNotifyImpl.notify(notify, context);
+        new HiemNotifyImpl().notify(notify, context);
     }
 
 }

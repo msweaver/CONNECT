@@ -32,6 +32,7 @@ import gov.hhs.fha.nhinc.auditrepository.nhinc.proxy.AuditRepositoryProxyObjectF
 import gov.hhs.fha.nhinc.common.auditlog.LogEventRequestType;
 import gov.hhs.fha.nhinc.common.eventcommon.NotifyEventType;
 import gov.hhs.fha.nhinc.common.nhinccommon.AssertionType;
+import gov.hhs.fha.nhinc.common.nhinccommon.HomeCommunityType;
 import gov.hhs.fha.nhinc.common.nhinccommon.NhinTargetCommunityType;
 import gov.hhs.fha.nhinc.common.nhinccommon.NhinTargetSystemType;
 import gov.hhs.fha.nhinc.common.nhinccommonadapter.CheckPolicyRequestType;
@@ -158,6 +159,9 @@ public class EntityNotifyOrchImpl {
 
                             NhinTargetSystemType targetSystem = new NhinTargetSystemType();
                             targetSystem.setUrl(endpoint);
+                            HomeCommunityType hcid = new HomeCommunityType();
+                            hcid.setHomeCommunityId("1.1");
+                            targetSystem.setHomeCommunity(hcid);
 
                             log.debug("building notify");
                             Element subscriptionReferenceElement = null;

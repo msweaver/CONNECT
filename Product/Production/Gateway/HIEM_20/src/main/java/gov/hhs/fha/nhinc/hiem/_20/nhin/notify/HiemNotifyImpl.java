@@ -60,7 +60,7 @@ public class HiemNotifyImpl {
 
     private static Log log = LogFactory.getLog(HiemNotifyImpl.class);
 
-    public static void notify(Notify notifyRequest, WebServiceContext context) {
+    public void notify(Notify notifyRequest, WebServiceContext context) {
         log.debug("Entering HiemNotifyImpl.notify");
         AssertionType assertion = SAML2AssertionExtractor.getInstance().extractSamlAssertion(context);
             
