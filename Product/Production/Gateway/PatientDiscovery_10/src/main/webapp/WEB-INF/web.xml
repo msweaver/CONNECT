@@ -20,8 +20,8 @@
       classpath:CONNECT-interceptor-beans.xml 
       classpath:CONNECT-context.xml
       classpath:eventlogging.xml
-      classpath:applicationContext.xml
-      classpath:webservices.xml
+      classpath:PDApplicationContext.xml
+      classpath:PDWebservices.xml
       </param-value>
       
    </context-param>

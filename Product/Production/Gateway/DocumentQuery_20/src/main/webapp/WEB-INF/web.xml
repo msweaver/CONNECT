@@ -18,8 +18,8 @@
             classpath:CONNECT-interceptor-beans.xml
             classpath:CONNECT-context.xml
             classpath:eventlogging.xml
-            classpath:applicationContext.xml
-            classpath:webservices.xml
+            classpath:DQApplicationContext.xml
+            classpath:DQWebservices.xml
         </param-value>
     </context-param>
 
