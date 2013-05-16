@@ -96,8 +96,7 @@ public class AdapterDocQueryProxyWebServiceUnsecuredImpl extends BaseAdapterDocQ
                     request.setAssertion(assertion);
                     ServicePortDescriptor<AdapterDocQueryPortType> portDescriptor = getServicePortDescriptor(NhincConstants.ADAPTER_API_LEVEL.LEVEL_a0);
 
-                    CONNECTClient<AdapterDocQueryPortType> client = CONNECTClientFactory.getInstance()
-                            .getCONNECTClientUnsecured(portDescriptor, url, assertion);
+                    CONNECTClient<AdapterDocQueryPortType> client = getCONNECTClientUnsecured(portDescriptor, url, assertion);
 
                     response = (AdhocQueryResponse) client.invokePort(AdapterDocQueryPortType.class,
                             "respondingGatewayCrossGatewayQuery", request);
@@ -113,6 +112,17 @@ public class AdapterDocQueryProxyWebServiceUnsecuredImpl extends BaseAdapterDocQ
 
         LOG.debug("End respondingGatewayCrossGatewayQuery");
         return response;
+    }
+
+    /**
+     * @param portDescriptor
+     * @param url
+     * @param assertion
+     * @return
+     */
+    protected CONNECTClient<AdapterDocQueryPortType> getCONNECTClientUnsecured(
+            ServicePortDescriptor<AdapterDocQueryPortType> portDescriptor, String url, AssertionType assertion) {
+        return CONNECTClientFactory.getInstance().getCONNECTClientUnsecured(portDescriptor, url, assertion);
     }
 
 }

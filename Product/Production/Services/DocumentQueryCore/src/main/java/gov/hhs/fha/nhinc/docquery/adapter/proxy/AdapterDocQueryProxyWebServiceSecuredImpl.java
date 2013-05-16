@@ -90,8 +90,7 @@ public class AdapterDocQueryProxyWebServiceSecuredImpl extends BaseAdapterDocQue
                 } else {
                     ServicePortDescriptor<AdapterDocQuerySecuredPortType> portDescriptor = getServicePortDescriptor(NhincConstants.ADAPTER_API_LEVEL.LEVEL_a0);
 
-                    CONNECTClient<AdapterDocQuerySecuredPortType> client = CONNECTClientFactory.getInstance()
-                            .getCONNECTClientSecured(portDescriptor, url, assertion);
+                    CONNECTClient<AdapterDocQuerySecuredPortType> client = getCONNECTClientSecured(portDescriptor, url, assertion);
 
                     response = (AdhocQueryResponse) client.invokePort(AdapterDocQuerySecuredPortType.class,
                             "respondingGatewayCrossGatewayQuery", msg);
@@ -106,5 +105,16 @@ public class AdapterDocQueryProxyWebServiceSecuredImpl extends BaseAdapterDocQue
         }
 
         return response;
+    }
+
+    /**
+     * @param portDescriptor
+     * @param url
+     * @param assertion
+     * @return
+     */
+    protected CONNECTClient<AdapterDocQuerySecuredPortType> getCONNECTClientSecured(
+            ServicePortDescriptor<AdapterDocQuerySecuredPortType> portDescriptor, String url, AssertionType assertion) {
+        return CONNECTClientFactory.getInstance().getCONNECTClientSecured(portDescriptor, url, assertion);
     }
 }
