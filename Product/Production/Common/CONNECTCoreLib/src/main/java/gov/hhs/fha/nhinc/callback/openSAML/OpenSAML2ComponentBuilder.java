@@ -33,6 +33,7 @@ import java.security.PublicKey;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -727,13 +728,10 @@ public class OpenSAML2ComponentBuilder implements SAMLCompontentBuilder {
      * @param communityId the community id
      * @return the list
      */
-    public List<AttributeStatement> createHomeCommunitAttributeStatement(String communityId) {
-        List<AttributeStatement> statements = new ArrayList<AttributeStatement>();
+    public List<Attribute> createHomeCommunitAttributeStatement(String communityId) {
         Attribute attribute = createHomeCommunityAttribute(communityId);
 
-        statements.addAll(OpenSAML2ComponentBuilder.getInstance().createAttributeStatement(Arrays.asList(attribute)));
-
-        return statements;
+        return Collections.singletonList(attribute);
     }
 
     /**
@@ -778,13 +776,10 @@ public class OpenSAML2ComponentBuilder implements SAMLCompontentBuilder {
      * @param purposeDisplay the purpose display
      * @return the list
      */
-    public List<AttributeStatement> createPurposeOfUseAttributeStatements(String purposeCode, String purposeSystem,
+    public List<Attribute> createPurposeOfUseAttributeStatements(String purposeCode, String purposeSystem,
             String purposeSystemName, String purposeDisplay) {
-
-        List<AttributeStatement> statements = new ArrayList<AttributeStatement>();
         Attribute attribute = createPurposeOfUseAttribute(purposeCode, purposeSystem, purposeSystemName, purposeDisplay);
-        statements.addAll(createAttributeStatement(Arrays.asList(attribute)));
-        return statements;
+        return Collections.singletonList(attribute);
     }
 
     /**
@@ -796,13 +791,11 @@ public class OpenSAML2ComponentBuilder implements SAMLCompontentBuilder {
      * @param purposeDisplay the purpose display
      * @return the list
      */
-    public List<AttributeStatement> createPurposeForUseAttributeStatements(String purposeCode, String purposeSystem,
+    public List<Attribute> createPurposeForUseAttributeStatements(String purposeCode, String purposeSystem,
             String purposeSystemName, String purposeDisplay) {
-        List<AttributeStatement> statements = new ArrayList<AttributeStatement>();
         Attribute attribute = createPurposeForUseAttribute(purposeCode, purposeSystem, purposeSystemName,
                 purposeDisplay);
-        statements.addAll(createAttributeStatement(Arrays.asList(attribute)));
-        return statements;
+        return Collections.singletonList(attribute);
     }
 
     /**
@@ -882,12 +875,9 @@ public class OpenSAML2ComponentBuilder implements SAMLCompontentBuilder {
      * @param organizationId the organization id
      * @return the list
      */
-    public List<AttributeStatement> createOrganizationIdAttributeStatement(String organizationId) {
-        List<AttributeStatement> statements = new ArrayList<AttributeStatement>();
+    public List<Attribute> createOrganizationIdAttributeStatement(String organizationId) {
         Attribute attribute = createAttribute(null, SamlConstants.USER_ORG_ID_ATTR, null, Arrays.asList(organizationId));
 
-        statements.addAll(OpenSAML2ComponentBuilder.getInstance().createAttributeStatement(Arrays.asList(attribute)));
-
-        return statements;
+        return Collections.singletonList(attribute);
     }
 }
